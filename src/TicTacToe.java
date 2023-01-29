@@ -1,16 +1,16 @@
 import java.util.Scanner;
 
-public class TicTacToe {
-    char[][] board = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
-    int currentPlayer;
-    Scanner sc = new Scanner(System.in);
+class TicTacToe {
+    private char[][] board = { { ' ', ' ', ' ' }, { ' ', ' ', ' ' }, { ' ', ' ', ' ' } };
+    private int currentPlayer;
+    private Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
         TicTacToe ob = new TicTacToe();
         ob.play();
     }
 
-    public void play() {
+    private void play() {
         currentPlayer = 1;
         while (true) {
             printBoard();
@@ -40,12 +40,12 @@ public class TicTacToe {
         }
     }
 
-    public void updateBoard(int[] ar) {
+    private void updateBoard(int[] ar) {
         char ch = currentPlayer == 1 ? 'X' : 'O';
         board[ar[0]][ar[1]] = ch;
     }
 
-    public int[] input() {
+    private int[] input() {
 
         System.out.println("Enter row number");
         int r = sc.nextInt() - 1;
@@ -57,7 +57,7 @@ public class TicTacToe {
         return mv;
     }
 
-    public boolean checkValidMove(int[] a) {
+    private boolean checkValidMove(int[] a) {
         int n = a[0], m = a[1];
         if (n < 3 && m < 3)
             if (board[n][m] == ' ')
@@ -65,7 +65,7 @@ public class TicTacToe {
         return false;
     }
 
-    public void printBoard() {
+    private void printBoard() {
         System.out.println();
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -80,12 +80,12 @@ public class TicTacToe {
         System.out.println();
     }
 
-    public boolean checkWin() {
+    private boolean checkWin() {
         char ch = currentPlayer == 1 ? 'X' : 'O';
         return checkRows(ch) || checkDiagonals(ch) || checkColumns(ch);
     }
 
-    public boolean checkRows(char ch) {
+    private boolean checkRows(char ch) {
         for (int i = 0; i < 3; i++)
             if (board[i][0] == board[i][1] && board[i][1] == board[i][2])
                 if (board[i][0] == ch)
@@ -93,7 +93,7 @@ public class TicTacToe {
         return false;
     }
 
-    public boolean checkDiagonals(char ch) {
+    private boolean checkDiagonals(char ch) {
         if ((board[0][0] == board[1][1] && board[1][1] == board[2][2])
                 || (board[0][2]) == board[1][1] && board[1][1] == board[2][0])
             if (board[1][1] == ch)
@@ -101,7 +101,7 @@ public class TicTacToe {
         return false;
     }
 
-    public boolean checkColumns(char ch) {
+    private boolean checkColumns(char ch) {
         for (int i = 0; i < 3; i++)
             if (board[0][i] == board[1][i] && board[1][i] == board[2][i])
                 if (board[0][i] == ch)
@@ -109,7 +109,7 @@ public class TicTacToe {
         return false;
     }
 
-    public boolean checkTie() {
+    private boolean checkTie() {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++)
                 if (board[i][j] == ' ')
