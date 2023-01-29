@@ -21,10 +21,12 @@ public class TicTacToe {
                     updateBoard(ar);
                     if (checkWin()) {
                         System.out.println("Player " + currentPlayer + " wins");
+                        printBoard();
                         return;
                     }
                     if (checkTie()) {
                         System.out.println("Tie");
+                        printBoard();
                         return;
                     }
                     if (currentPlayer == 1)
