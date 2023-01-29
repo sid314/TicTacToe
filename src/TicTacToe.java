@@ -23,6 +23,10 @@ public class TicTacToe {
                         System.out.println("Player " + currentPlayer + " wins");
                         return;
                     }
+                    if(checkTie()){
+                        System.out.println("Tie");
+                        return;
+                    }
                     if (currentPlayer == 1)
                         currentPlayer = 2;
                     else
@@ -101,6 +105,13 @@ public class TicTacToe {
                 if (board[0][i] == ch)
                     return true;
         return false;
+    }
+    public boolean checkTie(){
+        for(int i = 0; i<3;i++)
+            for(int j = 0; j<3;j++)
+                if(board[i][j]==' ')
+                    return false;
+        return true;
     }
 
 }
